@@ -1,5 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { IconsModule } from '../icons/icons.module';
+import { LoginModule } from '../login/login.module';
+import { TextsModule } from '../texts/texts.module';
+import { UiModule } from '../ui/ui.module';
 
 
 
@@ -7,6 +11,13 @@ import { CommonModule } from '@angular/common';
   declarations: [],
   imports: [
     CommonModule
+  ],
+  exports: [
+    UiModule,
+    LoginModule,
+    TextsModule,
+    IconsModule
+
   ]
 })
 export class CoreModule { }
