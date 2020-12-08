@@ -1,12 +1,14 @@
 <div class="d-flex flex-column">
-  <div>
+  <div id="header">
     <ng-content select=".header"></ng-content>
   </div>
-  <div>
-    <ng-content select=".nav"></ng-content>
+  <div class="d-flex flex-row flex-grow-1">
+    <div id="nav">
+      <ng-content select=".nav"></ng-content>
+    </div>
+    <div id="content" class="flex-grow-1">content</div>
   </div>
-  <div class="flex-grow-1">content</div>
-  <div>
+  <div id="footer">
     <ng-content select=".footer"></ng-content>
   </div>
 </div>
