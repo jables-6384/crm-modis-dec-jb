@@ -4,3 +4,7 @@ body, html {
 }
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+@import './stylings/fonts';
+@import './stylings/layout';
+@import './stylings/theme';
