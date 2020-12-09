@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+/**
+ * User interface 2
+ */
 @Component({
   selector: 'app-ui2',
   templateUrl: './ui2.component.html',
@@ -7,6 +10,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class Ui2Component implements OnInit {
 
+  /**
+   * defines if the panel is opened or not
+   */
   public open: boolean;
 
   constructor() {
@@ -15,6 +21,9 @@ export class Ui2Component implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * open or close the nav menu
+   */
   public toggle(): void {
     this.open = !this.open;
   }
