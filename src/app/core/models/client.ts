@@ -11,4 +11,6 @@ export class Client implements OrderI{
   typePresta!: string;
   client!: string;
   comment!: string;
+
+  constructor(){}
 }

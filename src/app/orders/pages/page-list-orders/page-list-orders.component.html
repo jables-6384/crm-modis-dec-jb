@@ -1,1 +1,19 @@
-<p>page-list-orders works!</p>
+<div>the tableau of the mort</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th *ngFor="let column of headElements" scope="col">{{column}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of collection$; let i = index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{order.client}}</td>
+      <td>{{order.nbJours}}</td>
+      <td>{{order.state}}</td>
+      <td>{{order.tjmHt}}</td>
+      <td>{{order.tva}}</td>
+      <td>{{order.typePresta}}</td>
+      <td>{{order.comment}}</td>
+    </tr>
+</table>
