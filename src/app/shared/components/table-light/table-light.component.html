@@ -1,0 +1,18 @@
+<table class="table table-striped">
+  <thead>
+    <tr >
+      <th *ngFor="let head of headers" scope="col">{{head}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor=" let item of collection">
+      <td>{{item.typePresta}}</td>
+      <td>{{item.client}}</td>
+      <td>{{item.nbJours}}</td>
+      <td>{{item.tjmHt}}</td>
+      <td>total ttc</td>
+      <td>total ht</td>
+      <td>{{item.state}}</td>
+    </tr>
+  </tbody>
+</table>

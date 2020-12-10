@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/core/models/order';
 import { OrderService } from 'src/app/core/services/order.service';
 
@@ -8,16 +8,21 @@ import { OrderService } from 'src/app/core/services/order.service';
   styleUrls: ['./page-list-orders.component.scss'],
 })
 export class PageListOrdersComponent implements OnInit {
+  public collection!: Order[];
 
-
-  public collection$!: Order[];
-
-  headElements = ['id', 'client', 'Nb jours', 'state', 'tjm ht', 'tva', 'type presta', 'comment'];
+  public headers = [
+    'Type',
+    'Client',
+    'NbJours',
+    'Tjm HT',
+    'Total TTC',
+    'Total HT',
+    'State',
+  ];
 
   constructor(private orderService: OrderService) {
-    this.orderService.collection.subscribe((data) => {
-      this.collection$ = data;
-      console.log(data);
+    this.orderService.collection$.subscribe((data) => {
+      this.collection = data;
     });
   }
 

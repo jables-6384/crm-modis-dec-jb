@@ -12,14 +12,14 @@ export class OrderService {
   private urlApi = environment.urlApi;
 
   constructor(private http: HttpClient) {
-    this.collection = http.get<Order[]>(`${this.urlApi}/orders`);
+    this.collection$ = http.get<Order[]>(`${this.urlApi}/orders`);
   }
 
-  get collection(): Observable<Order[]> {
+  get collection$(): Observable<Order[]> {
     return this.pCollection;
   }
 
-  set collection(col: Observable<Order[]>) {
+  set collection$(col: Observable<Order[]>) {
     this.pCollection = col;
   }
 }
