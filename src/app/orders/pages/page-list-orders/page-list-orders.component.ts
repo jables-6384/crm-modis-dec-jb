@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order.enum';
 import { Order } from 'src/app/core/models/order';
@@ -19,7 +19,7 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
   public headers!: string[];
   public states = Object.values(StateOrder);
 
-  constructor(private orderService: OrderService) {
+  constructor(private orderService: OrderService,  private cdr: ChangeDetectorRef) {
     // this.sub = this.orderService.collection$.subscribe((data) => {
     //   this.collection = data;
     // });
@@ -45,6 +45,7 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
     const state = event.target.value;
     this.orderService.changeState(item, state).subscribe((obj) => {
       item.state = obj.state;
+      this.cdr.detectChanges();
     });
   }
 }
