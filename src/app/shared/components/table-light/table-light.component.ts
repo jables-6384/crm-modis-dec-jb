@@ -1,5 +1,9 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Order } from 'src/app/core/models/order';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit
+} from '@angular/core';
 
 @Component({
   selector: 'app-table-light',
@@ -7,19 +11,12 @@ import { Order } from 'src/app/core/models/order';
   styleUrls: ['./table-light.component.scss'],
 })
 export class TableLightComponent implements OnInit, OnChanges {
-
   @Input()
   public headers!: string[];
 
-  @Input()
-  public collection!: Order[];
+  constructor() {}
 
-  constructor() {
-  }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  ngOnChanges(): void {
-  }
+  ngOnChanges(): void {}
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Order } from 'src/app/core/models/order';
 import { OrderService } from 'src/app/core/services/order.service';
 
@@ -7,23 +8,33 @@ import { OrderService } from 'src/app/core/services/order.service';
   templateUrl: './page-list-orders.component.html',
   styleUrls: ['./page-list-orders.component.scss'],
 })
-export class PageListOrdersComponent implements OnInit {
-  public collection!: Order[];
+export class PageListOrdersComponent implements OnInit, OnDestroy {
+  // public collection!: Order[];
+   public collection$!: Observable<Order[]>;
 
-  public headers = [
-    'Type',
-    'Client',
-    'NbJours',
-    'Tjm HT',
-    'Total TTC',
-    'Total HT',
-    'State',
-  ];
+  // Not mandatory for http client observables.
+  // private sub!: Subscription;
+
+  public headers!: string[];
 
   constructor(private orderService: OrderService) {
-    this.orderService.collection$.subscribe((data) => {
-      this.collection = data;
-    });
+    // this.sub = this.orderService.collection$.subscribe((data) => {
+    //   this.collection = data;
+    // });
+    this.collection$ = this.orderService.collection$;
+    this.headers = [
+      'Type',
+      'Client',
+      'NbJours',
+      'Tjm HT',
+      'Total HT',
+      'Total TTC',
+      'State',
+    ];
+  }
+  ngOnDestroy(): void {
+    // Not mandatory for http client observables.
+    // this.sub.unsubscribe();
   }
 
   ngOnInit(): void {}

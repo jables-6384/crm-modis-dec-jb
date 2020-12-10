@@ -1,9 +1,14 @@
-<!-- <app-template-full-witdh>
+<app-template-full-witdh>
   <h1 class="title">Clients</h1>
   <ng-container class="contents">
-    <app-table-light
-      [collection]="collection"
-      [headers]="headers"
-    ></app-table-light>
+    <app-table-light  *ngIf="collection$ | async as collection" [headers]="headers">
+      <tr *ngFor="let item of collection ">
+      <td>{{ item.name }}</td>
+      <td>{{ item.totalCaHt | currency }}</td>
+      <td>{{ item.totalCaHt | total : 1 : item.tva | currency }}</td>
+      <td>{{ item.comment }}</td>
+      <td>{{ item.state }}</td>
+      </tr>
+    </app-table-light>
   </ng-container>
-</app-template-full-witdh> -->
+</app-template-full-witdh>

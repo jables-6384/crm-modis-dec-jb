@@ -5,10 +5,11 @@ import { TemplatesModule } from '../templates/templates.module';
 import { TextsModule } from '../texts/texts.module';
 import { TableLightComponent } from './components/table-light/table-light.component';
 import { BtnComponent } from './components/btn/btn.component';
+import { TotalPipe } from './pipes/total.pipe';
 
 @NgModule({
-  declarations: [TableLightComponent, BtnComponent],
+  declarations: [TableLightComponent, BtnComponent, TotalPipe],
   imports: [CommonModule],
-  exports: [TemplatesModule, IconsModule, TextsModule, TableLightComponent, BtnComponent],
+  exports: [TemplatesModule, IconsModule, TextsModule, TableLightComponent, BtnComponent, TotalPipe],
 })
 export class SharedModule {}
