@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { StateClient } from 'src/app/core/enums/state-client.enum';
 import { Client } from 'src/app/core/models/client';
 import { ClientService } from 'src/app/core/services/client.service';
 
@@ -11,11 +12,19 @@ import { ClientService } from 'src/app/core/services/client.service';
 export class PageListClientsComponent implements OnInit {
   public collection$!: Observable<Client[]>;
   public headers!: string[];
+  public states = Object.values(StateClient);
 
   constructor(private clientService: ClientService) {
-   this.collection$ = this.clientService.collection$;
-   this.headers = ['Name', 'Total CA HT', 'Total CA TTC', 'Comment', 'State'];
+    this.collection$ = this.clientService.collection$;
+    this.headers = ['Name', 'Total CA HT', 'Total CA TTC', 'Comment', 'State'];
   }
 
   ngOnInit(): void {}
+
+  public changeState(item: Client, event: any): void {
+    const state = event.target.value;
+    this.clientService.changeState(item, state).subscribe((obj) => {
+      item.state = obj.state;
+    });
+  }
 }
