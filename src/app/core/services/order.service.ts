@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StateOrder } from '../enums/state-order.enum';
@@ -25,7 +26,7 @@ export class OrderService {
   }
 
   public changeState(item: Order, state: StateOrder): Observable<Order> {
-    const obj = {...item};
+    const obj = { ...item };
     obj.state = state;
     return this.update(obj);
   }
