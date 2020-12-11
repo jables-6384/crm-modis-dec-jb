@@ -33,4 +33,13 @@ export class OrderService {
   private update(item: Order): Observable<Order> {
     return this.http.put<Order>(`${this.urlApi}/orders/${item.id}`, item);
   }
+
+  public delete(item: Order): Observable<Order> {
+    return this.http.delete<Order>(`${this.urlApi}/orders/${item.id}`);
+  }
+
+  public add(item: Order): Observable<Order> {
+    return this.http.post<Order>(`${this.urlApi}/orders/`, item);
+  }
+
 }

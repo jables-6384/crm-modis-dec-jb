@@ -5,7 +5,7 @@ import {
   OnDestroy,
   OnInit
 } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order.enum';
 import { Order } from 'src/app/core/models/order';
 import { OrderService } from 'src/app/core/services/order.service';
@@ -17,7 +17,7 @@ import { OrderService } from 'src/app/core/services/order.service';
 })
 export class PageListOrdersComponent implements OnInit, OnDestroy {
   // public collection!: Order[];
-  public collection$!: Observable<Order[]>;
+  public collection$: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
 
   // Not mandatory for http client observables.
   // private sub!: Subscription;
@@ -29,17 +29,20 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
     private orderService: OrderService,
     private cdr: ChangeDetectorRef
   ) {
-    // this.sub = this.orderService.collection$.subscribe((data) => {
-    //   this.collection = data;
-    // });
-    this.collection$ = this.orderService.collection$;
-    this.headers = [
+   this.orderService.collection$.subscribe((data) => {
+      this.collection$.next(data);
+    });
+    // this.collection$ = this.orderService.collection$;
+
+   this.headers = [
+      'ACTION',
       'Type',
       'Client',
       'NbJours',
       'Tjm HT',
       'Total HT',
       'Total TTC',
+      'comment',
       'State',
     ];
   }
@@ -55,6 +58,14 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
     this.orderService.changeState(item, state).subscribe((obj) => {
       item.state = obj.state;
       this.cdr.detectChanges();
+    });
+  }
+
+  public delete(item: Order): void {
+    this.orderService.delete(item).subscribe(() => {
+      this.orderService.collection$.subscribe((data) => {
+        this.collection$.next(data);
+      });
     });
   }
 }

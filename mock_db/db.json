@@ -2,16 +2,6 @@
   "orders": [
     {
       "tjmHt": 1100,
-      "nbJours": 10,
-      "tva": 20,
-      "state": "CANCELED",
-      "typePresta": "formation",
-      "client": "Atos",
-      "comment": "Merci Atos",
-      "id": 1
-    },
-    {
-      "tjmHt": 1100,
       "nbJours": 30,
       "tva": 20,
       "state": "CANCELED",
@@ -41,19 +31,29 @@
       "id": 4
     },
     {
-      "tjmHt": 1050,
-      "nbJours": 15,
+      "tjmHt": 12002,
+      "nbJours": 1555,
+      "tva": 20,
+      "state": "CONFIRMED",
+      "typePresta": "formation",
+      "client": "Momo",
+      "comment": "ça pique",
+      "id": 5
+    },
+    {
+      "tjmHt": 1200,
+      "nbJours": 1,
       "tva": 20,
       "state": "CANCELED",
-      "typePresta": "Coaching",
-      "client": "Capgemini",
-      "comment": "Merci Capgemini ",
-      "id": 5
+      "typePresta": "formation",
+      "client": "juju",
+      "comment": "tutu",
+      "id": 6
     }
   ],
   "clients": [
     {
-      "state": "ACTIVE",
+      "state": "INACTIVE",
       "tva": 20,
       "id": 1,
       "name": "Christophe2",
@@ -61,20 +61,12 @@
       "comment": "un comment pour client christophe2"
     },
     {
-      "state": "INACTIVE",
+      "state": "ACTIVE",
       "tva": 20,
       "id": 2,
       "name": "Modis",
       "totalCaHt": 120000,
       "comment": "un comment pour client modis"
-    },
-    {
-      "tva": 20,
-      "state": "INACTIVE",
-      "name": "modis",
-      "totalCaHt": 0,
-      "comment": "rsger",
-      "id": 3
     }
   ]
 }
